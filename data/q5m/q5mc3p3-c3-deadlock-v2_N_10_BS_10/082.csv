@@ -1,0 +1,16 @@
+action,step,time,p,p2,p3,b,serving1,serving2,serving3,c1,getting1,c2,getting2,c3,getting3,f,b2,serving11,serving12,serving13,c11,getting11,c12,getting12,c13,getting13
+-,0,0.0,0,0,0,0,false,false,false,0,false,0,false,0,false,0,0,false,false,false,0,false,0,false,0,false
+[producing],1,17.00234495389711,1,0,0,1,false,false,false,0,false,0,false,0,false,0,0,false,false,false,0,false,0,false,0,false
+[producing],2,17.155820834118185,2,0,0,2,false,false,false,0,false,0,false,0,false,0,0,false,false,false,0,false,0,false,0,false
+[producing],3,18.593697393274336,3,0,0,3,false,false,false,0,false,0,false,0,false,0,0,false,false,false,0,false,0,false,0,false
+[producing3],4,24.312063111431065,3,0,1,4,false,false,false,0,false,0,false,0,false,0,0,false,false,false,0,false,0,false,0,false
+[con_ready2],5,27.051736152840373,3,0,1,4,false,true,false,0,false,0,true,0,false,0,0,false,false,false,0,false,0,false,0,false
+[consuming2],6,27.991235837341865,3,0,1,3,false,false,false,0,false,1,false,0,false,0,0,false,false,false,0,false,0,false,0,false
+[producing2],7,32.96172076553597,3,1,1,4,false,false,false,0,false,1,false,0,false,0,0,false,false,false,0,false,0,false,0,false
+[con_ready2],8,43.66804984311466,3,1,1,4,false,true,false,0,false,1,true,0,false,0,0,false,false,false,0,false,0,false,0,false
+[consuming2],9,44.144641919830406,3,1,1,3,false,false,false,0,false,2,false,0,false,0,0,false,false,false,0,false,0,false,0,false
+[con_ready2],10,51.4570493994653,3,1,1,3,false,true,false,0,false,2,true,0,false,0,0,false,false,false,0,false,0,false,0,false
+[consuming2],11,51.571976629153134,3,1,1,2,false,false,false,0,false,3,false,0,false,0,0,false,false,false,0,false,0,false,0,false
+[producing3],12,55.19348257378227,3,1,2,3,false,false,false,0,false,3,false,0,false,0,0,false,false,false,0,false,0,false,0,false
+[producing3],13,55.25944066568231,3,1,3,4,false,false,false,0,false,3,false,0,false,0,0,false,false,false,0,false,0,false,0,false
+[producing3],14,62.750158241008876,3,1,4,4,true,false,false,0,false,3,false,0,false,0,0,false,false,false,0,false,0,false,0,false

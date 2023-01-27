@@ -1,0 +1,16 @@
+action,step,time,p,p2,p3,b,serving1,serving2,serving3,c1,getting1,c2,getting2,c3,getting3,f,b2,serving11,serving12,serving13,c11,getting11,c12,getting12,c13,getting13
+-,0,0.0,0,0,0,0,false,false,false,0,false,0,false,0,false,0,0,false,false,false,0,false,0,false,0,false
+[producing],1,38.42282078826019,1,0,0,1,false,false,false,0,false,0,false,0,false,0,0,false,false,false,0,false,0,false,0,false
+[producing2],2,43.364207729405535,1,1,0,2,false,false,false,0,false,0,false,0,false,0,0,false,false,false,0,false,0,false,0,false
+[producing2],3,43.77364331720177,1,2,0,3,false,false,false,0,false,0,false,0,false,0,0,false,false,false,0,false,0,false,0,false
+[producing],4,47.52985772579303,2,2,0,4,false,false,false,0,false,0,false,0,false,0,0,false,false,false,0,false,0,false,0,false
+[producing2],5,53.38377112760497,2,3,0,5,false,false,false,0,false,0,false,0,false,0,0,false,false,false,0,false,0,false,0,false
+[producing2],6,65.58199141882122,2,4,0,6,false,false,false,0,false,0,false,0,false,0,0,false,false,false,0,false,0,false,0,false
+[producing2],7,70.6824040729383,2,5,0,7,false,false,false,0,false,0,false,0,false,0,0,false,false,false,0,false,0,false,0,false
+[con_ready3],8,72.89352786272705,2,5,0,7,false,false,true,0,false,0,false,0,true,0,0,false,false,false,0,false,0,false,0,false
+[consuming3],9,74.7061398478673,2,5,0,6,false,false,false,0,false,0,false,1,false,0,0,false,false,false,0,false,0,false,0,false
+[producing3],10,87.94222826222578,2,5,1,7,false,false,false,0,false,0,false,1,false,0,0,false,false,false,0,false,0,false,0,false
+[producing3],11,92.3701722963707,2,5,2,7,true,false,false,0,false,0,false,1,false,0,0,false,false,false,0,false,0,false,0,false
+[forwarding],12,128.53668375562245,2,5,2,7,true,false,false,0,false,0,false,1,false,1,1,false,false,false,0,false,0,false,0,false
+[con_ready13],13,130.5582216468328,2,5,2,7,true,false,false,0,false,0,false,1,false,1,1,false,false,true,0,false,0,false,0,true
+[consuming13],14,130.8403949000882,2,5,2,7,true,false,false,0,false,0,false,1,false,1,0,false,false,false,0,false,0,false,1,false

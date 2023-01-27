@@ -1,0 +1,9 @@
+action,step,time,p,b,serving1,serving2,serving3,c1,getting1,c2,getting2,c3,getting3
+-,0,0.0,0,0,false,false,false,0,false,0,false,0,false
+[producing],1,55.73409952616266,1,1,false,false,false,0,false,0,false,0,false
+[con_ready2],2,56.043289720840406,1,1,false,true,false,0,false,0,true,0,false
+[consuming2],3,56.618658286017634,1,0,false,false,false,0,false,1,false,0,false
+[producing],4,81.12089339311471,2,1,false,false,false,0,false,1,false,0,false
+[producing],5,83.47553439603,3,2,false,false,false,0,false,1,false,0,false
+[producing],6,84.81948647389582,4,3,false,false,false,0,false,1,false,0,false
+[con_ready2],7,86.56129466187768,4,3,true,false,false,0,false,1,true,0,false

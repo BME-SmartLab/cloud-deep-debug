@@ -1,0 +1,288 @@
+mdp
+
+module REST_X0
+
+    s_X0 : [0 .. 10] init 0;
+
+    [] s_X0 = 0 ->1.0:(s_X0' = 2); // polling -> 1.0:X0_X2_GET_send {'initial': True}
+    [] s_X0 = 1 ->(s_X0' = 0); // failure -> :polling {'final': True}
+    [X0_X2_GET_req] s_X0 = 2 ->(s_X0' = 3); // X0_X2_GET_send -> :X0_X2_GET_recv {}
+    [X0_X2_GET_resp_2xx] s_X0 = 3 ->(s_X0' = 0); // X0_X2_GET_recv -> :polling {}
+    [X0_X2_GET_resp_5xx] s_X0 = 3 ->(s_X0' = 4); // X0_X2_GET_recv -> :X0_X2_GET_send_retry1 {}
+    [X0_X2_GET_req] s_X0 = 4 ->(s_X0' = 5); // X0_X2_GET_send_retry1 -> :X0_X2_GET_recv_retry1 {}
+    [X0_X2_GET_resp_2xx] s_X0 = 5 ->(s_X0' = 0); // X0_X2_GET_recv_retry1 -> :polling {}
+    [X0_X2_GET_resp_5xx] s_X0 = 5 ->(s_X0' = 6); // X0_X2_GET_recv_retry1 -> :X0_X2_GET_send_retry2 {}
+    [X0_X2_GET_req] s_X0 = 6 ->(s_X0' = 7); // X0_X2_GET_send_retry2 -> :X0_X2_GET_recv_retry2 {}
+    [X0_X2_GET_resp_2xx] s_X0 = 7 ->(s_X0' = 0); // X0_X2_GET_recv_retry2 -> :polling {}
+    [X0_X2_GET_resp_5xx] s_X0 = 7 ->(s_X0' = 8); // X0_X2_GET_recv_retry2 -> :X0_X2_GET_send_retry3 {}
+    [X0_X2_GET_req] s_X0 = 8 ->(s_X0' = 9); // X0_X2_GET_send_retry3 -> :X0_X2_GET_recv_retry3 {}
+    [X0_X2_GET_resp_2xx] s_X0 = 9 ->(s_X0' = 0); // X0_X2_GET_recv_retry3 -> :polling {}
+    [X0_X2_GET_resp_5xx] s_X0 = 9 ->(s_X0' = 1); // X0_X2_GET_recv_retry3 -> :failure {}
+
+endmodule
+
+module REST_X1
+
+    s_X1 : [0 .. 5] init 0;
+
+    [X3_X1_GET_req] s_X1 = 0 ->(s_X1' = 1); // listening -> :X3_X1_GET_recv {'initial': True}
+    [] s_X1 = 1 ->(s_X1' = 2); // X3_X1_GET_recv -> :X3_X1_GET_proc {}
+    [] s_X1 = 2 ->0.9:(s_X1' = 3)+0.1:(s_X1' = 4); // X3_X1_GET_proc -> 0.9:X3_X1_GET_send_2xx 0.1:X3_X1_GET_send_5xx {}
+    [X3_X1_GET_resp_2xx] s_X1 = 3 ->(s_X1' = 0); // X3_X1_GET_send_2xx -> :listening {}
+    [X3_X1_GET_resp_5xx] s_X1 = 4 ->(s_X1' = 0); // X3_X1_GET_send_5xx -> :listening {}
+
+endmodule
+
+module REST_X2
+
+    s_X2 : [0 .. 17] init 0;
+
+    [X0_X2_GET_req] s_X2 = 0 ->(s_X2' = 1); // listening -> :X0_X2_GET_recv {'initial': True}
+    [] s_X2 = 1 ->(s_X2' = 2); // X0_X2_GET_recv -> :X0_X2_GET_proc {}
+    [] s_X2 = 2 ->0.5:(s_X2' = 5)+0.5:(s_X2' = 11); // X0_X2_GET_proc -> 0.5:X2_X5_GET_send 0.5:X2_X3_GET_send {}
+    [X0_X2_GET_resp_2xx] s_X2 = 3 ->(s_X2' = 0); // X0_X2_GET_send_2xx -> :listening {}
+    [X0_X2_GET_resp_2xx] s_X2 = 3 ->(s_X2' = 0); // X0_X2_GET_send_2xx -> :listening {}
+    [X0_X2_GET_resp_5xx] s_X2 = 4 ->(s_X2' = 0); // X0_X2_GET_send_5xx -> :listening {}
+    [X0_X2_GET_resp_5xx] s_X2 = 4 ->(s_X2' = 0); // X0_X2_GET_send_5xx -> :listening {}
+    [X2_X5_GET_req] s_X2 = 5 ->(s_X2' = 6); // X2_X5_GET_send -> :X2_X5_GET_recv {}
+    [X2_X5_GET_resp_2xx] s_X2 = 6 ->(s_X2' = 3); // X2_X5_GET_recv -> :X0_X2_GET_send_2xx {}
+    [X2_X5_GET_resp_5xx] s_X2 = 6 ->(s_X2' = 7); // X2_X5_GET_recv -> :X2_X5_GET_send_retry1 {}
+    [X2_X5_GET_req] s_X2 = 7 ->(s_X2' = 8); // X2_X5_GET_send_retry1 -> :X2_X5_GET_recv_retry1 {}
+    [X2_X5_GET_resp_2xx] s_X2 = 8 ->(s_X2' = 3); // X2_X5_GET_recv_retry1 -> :X0_X2_GET_send_2xx {}
+    [X2_X5_GET_resp_5xx] s_X2 = 8 ->(s_X2' = 9); // X2_X5_GET_recv_retry1 -> :X2_X5_GET_send_retry2 {}
+    [X2_X5_GET_req] s_X2 = 9 ->(s_X2' = 10); // X2_X5_GET_send_retry2 -> :X2_X5_GET_recv_retry2 {}
+    [X2_X5_GET_resp_2xx] s_X2 = 10 ->(s_X2' = 3); // X2_X5_GET_recv_retry2 -> :X0_X2_GET_send_2xx {}
+    [X2_X5_GET_resp_5xx] s_X2 = 10 ->(s_X2' = 4); // X2_X5_GET_recv_retry2 -> :X0_X2_GET_send_5xx {}
+    [X2_X3_GET_req] s_X2 = 11 ->(s_X2' = 12); // X2_X3_GET_send -> :X2_X3_GET_recv {}
+    [X2_X3_GET_resp_2xx] s_X2 = 12 ->(s_X2' = 3); // X2_X3_GET_recv -> :X0_X2_GET_send_2xx {}
+    [X2_X3_GET_resp_5xx] s_X2 = 12 ->(s_X2' = 13); // X2_X3_GET_recv -> :X2_X3_GET_send_retry1 {}
+    [X2_X3_GET_req] s_X2 = 13 ->(s_X2' = 14); // X2_X3_GET_send_retry1 -> :X2_X3_GET_recv_retry1 {}
+    [X2_X3_GET_resp_2xx] s_X2 = 14 ->(s_X2' = 3); // X2_X3_GET_recv_retry1 -> :X0_X2_GET_send_2xx {}
+    [X2_X3_GET_resp_5xx] s_X2 = 14 ->(s_X2' = 15); // X2_X3_GET_recv_retry1 -> :X2_X3_GET_send_retry2 {}
+    [X2_X3_GET_req] s_X2 = 15 ->(s_X2' = 16); // X2_X3_GET_send_retry2 -> :X2_X3_GET_recv_retry2 {}
+    [X2_X3_GET_resp_2xx] s_X2 = 16 ->(s_X2' = 3); // X2_X3_GET_recv_retry2 -> :X0_X2_GET_send_2xx {}
+    [X2_X3_GET_resp_5xx] s_X2 = 16 ->(s_X2' = 4); // X2_X3_GET_recv_retry2 -> :X0_X2_GET_send_5xx {}
+
+endmodule
+
+module REST_X3
+
+    s_X3 : [0 .. 23] init 0;
+
+    [X2_X3_GET_req] s_X3 = 0 ->(s_X3' = 1); // listening -> :X2_X3_GET_recv {'initial': True}
+    [] s_X3 = 1 ->(s_X3' = 2); // X2_X3_GET_recv -> :X2_X3_GET_proc {}
+    [] s_X3 = 2 ->0.3333333333333333:(s_X3' = 5)+0.3333333333333333:(s_X3' = 11)+0.3333333333333333:(s_X3' = 17); // X2_X3_GET_proc -> 0.3333333333333333:X3_X1_GET_send 0.3333333333333333:X3_X4_GET_send 0.3333333333333333:X3_X6_GET_send {}
+    [X2_X3_GET_resp_2xx] s_X3 = 3 ->(s_X3' = 0); // X2_X3_GET_send_2xx -> :listening {}
+    [X2_X3_GET_resp_2xx] s_X3 = 3 ->(s_X3' = 0); // X2_X3_GET_send_2xx -> :listening {}
+    [X2_X3_GET_resp_2xx] s_X3 = 3 ->(s_X3' = 0); // X2_X3_GET_send_2xx -> :listening {}
+    [X2_X3_GET_resp_5xx] s_X3 = 4 ->(s_X3' = 0); // X2_X3_GET_send_5xx -> :listening {}
+    [X2_X3_GET_resp_5xx] s_X3 = 4 ->(s_X3' = 0); // X2_X3_GET_send_5xx -> :listening {}
+    [X2_X3_GET_resp_5xx] s_X3 = 4 ->(s_X3' = 0); // X2_X3_GET_send_5xx -> :listening {}
+    [X3_X1_GET_req] s_X3 = 5 ->(s_X3' = 6); // X3_X1_GET_send -> :X3_X1_GET_recv {}
+    [X3_X1_GET_resp_2xx] s_X3 = 6 ->(s_X3' = 3); // X3_X1_GET_recv -> :X2_X3_GET_send_2xx {}
+    [X3_X1_GET_resp_5xx] s_X3 = 6 ->(s_X3' = 7); // X3_X1_GET_recv -> :X3_X1_GET_send_retry1 {}
+    [X3_X1_GET_req] s_X3 = 7 ->(s_X3' = 8); // X3_X1_GET_send_retry1 -> :X3_X1_GET_recv_retry1 {}
+    [X3_X1_GET_resp_2xx] s_X3 = 8 ->(s_X3' = 3); // X3_X1_GET_recv_retry1 -> :X2_X3_GET_send_2xx {}
+    [X3_X1_GET_resp_5xx] s_X3 = 8 ->(s_X3' = 9); // X3_X1_GET_recv_retry1 -> :X3_X1_GET_send_retry2 {}
+    [X3_X1_GET_req] s_X3 = 9 ->(s_X3' = 10); // X3_X1_GET_send_retry2 -> :X3_X1_GET_recv_retry2 {}
+    [X3_X1_GET_resp_2xx] s_X3 = 10 ->(s_X3' = 3); // X3_X1_GET_recv_retry2 -> :X2_X3_GET_send_2xx {}
+    [X3_X1_GET_resp_5xx] s_X3 = 10 ->(s_X3' = 4); // X3_X1_GET_recv_retry2 -> :X2_X3_GET_send_5xx {}
+    [X3_X4_GET_req] s_X3 = 11 ->(s_X3' = 12); // X3_X4_GET_send -> :X3_X4_GET_recv {}
+    [X3_X4_GET_resp_2xx] s_X3 = 12 ->(s_X3' = 3); // X3_X4_GET_recv -> :X2_X3_GET_send_2xx {}
+    [X3_X4_GET_resp_5xx] s_X3 = 12 ->(s_X3' = 13); // X3_X4_GET_recv -> :X3_X4_GET_send_retry1 {}
+    [X3_X4_GET_req] s_X3 = 13 ->(s_X3' = 14); // X3_X4_GET_send_retry1 -> :X3_X4_GET_recv_retry1 {}
+    [X3_X4_GET_resp_2xx] s_X3 = 14 ->(s_X3' = 3); // X3_X4_GET_recv_retry1 -> :X2_X3_GET_send_2xx {}
+    [X3_X4_GET_resp_5xx] s_X3 = 14 ->(s_X3' = 15); // X3_X4_GET_recv_retry1 -> :X3_X4_GET_send_retry2 {}
+    [X3_X4_GET_req] s_X3 = 15 ->(s_X3' = 16); // X3_X4_GET_send_retry2 -> :X3_X4_GET_recv_retry2 {}
+    [X3_X4_GET_resp_2xx] s_X3 = 16 ->(s_X3' = 3); // X3_X4_GET_recv_retry2 -> :X2_X3_GET_send_2xx {}
+    [X3_X4_GET_resp_5xx] s_X3 = 16 ->(s_X3' = 4); // X3_X4_GET_recv_retry2 -> :X2_X3_GET_send_5xx {}
+    [X3_X6_GET_req] s_X3 = 17 ->(s_X3' = 18); // X3_X6_GET_send -> :X3_X6_GET_recv {}
+    [X3_X6_GET_resp_2xx] s_X3 = 18 ->(s_X3' = 3); // X3_X6_GET_recv -> :X2_X3_GET_send_2xx {}
+    [X3_X6_GET_resp_5xx] s_X3 = 18 ->(s_X3' = 19); // X3_X6_GET_recv -> :X3_X6_GET_send_retry1 {}
+    [X3_X6_GET_req] s_X3 = 19 ->(s_X3' = 20); // X3_X6_GET_send_retry1 -> :X3_X6_GET_recv_retry1 {}
+    [X3_X6_GET_resp_2xx] s_X3 = 20 ->(s_X3' = 3); // X3_X6_GET_recv_retry1 -> :X2_X3_GET_send_2xx {}
+    [X3_X6_GET_resp_5xx] s_X3 = 20 ->(s_X3' = 21); // X3_X6_GET_recv_retry1 -> :X3_X6_GET_send_retry2 {}
+    [X3_X6_GET_req] s_X3 = 21 ->(s_X3' = 22); // X3_X6_GET_send_retry2 -> :X3_X6_GET_recv_retry2 {}
+    [X3_X6_GET_resp_2xx] s_X3 = 22 ->(s_X3' = 3); // X3_X6_GET_recv_retry2 -> :X2_X3_GET_send_2xx {}
+    [X3_X6_GET_resp_5xx] s_X3 = 22 ->(s_X3' = 4); // X3_X6_GET_recv_retry2 -> :X2_X3_GET_send_5xx {}
+
+endmodule
+
+module REST_X4
+
+    s_X4 : [0 .. 5] init 0;
+
+    [X3_X4_GET_req] s_X4 = 0 ->(s_X4' = 1); // listening -> :X3_X4_GET_recv {'initial': True}
+    [] s_X4 = 1 ->(s_X4' = 2); // X3_X4_GET_recv -> :X3_X4_GET_proc {}
+    [] s_X4 = 2 ->0.9:(s_X4' = 3)+0.1:(s_X4' = 4); // X3_X4_GET_proc -> 0.9:X3_X4_GET_send_2xx 0.1:X3_X4_GET_send_5xx {}
+    [X3_X4_GET_resp_2xx] s_X4 = 3 ->(s_X4' = 0); // X3_X4_GET_send_2xx -> :listening {}
+    [X3_X4_GET_resp_5xx] s_X4 = 4 ->(s_X4' = 0); // X3_X4_GET_send_5xx -> :listening {}
+
+endmodule
+
+module REST_X5
+
+    s_X5 : [0 .. 5] init 0;
+
+    [X2_X5_GET_req] s_X5 = 0 ->(s_X5' = 1); // listening -> :X2_X5_GET_recv {'initial': True}
+    [] s_X5 = 1 ->(s_X5' = 2); // X2_X5_GET_recv -> :X2_X5_GET_proc {}
+    [] s_X5 = 2 ->0.9:(s_X5' = 3)+0.1:(s_X5' = 4); // X2_X5_GET_proc -> 0.9:X2_X5_GET_send_2xx 0.1:X2_X5_GET_send_5xx {}
+    [X2_X5_GET_resp_2xx] s_X5 = 3 ->(s_X5' = 0); // X2_X5_GET_send_2xx -> :listening {}
+    [X2_X5_GET_resp_5xx] s_X5 = 4 ->(s_X5' = 0); // X2_X5_GET_send_5xx -> :listening {}
+
+endmodule
+
+module REST_X6
+
+    s_X6 : [0 .. 5] init 0;
+
+    [X3_X6_GET_req] s_X6 = 0 ->(s_X6' = 1); // listening -> :X3_X6_GET_recv {'initial': True}
+    [] s_X6 = 1 ->(s_X6' = 2); // X3_X6_GET_recv -> :X3_X6_GET_proc {}
+    [] s_X6 = 2 ->0.9:(s_X6' = 3)+0.1:(s_X6' = 4); // X3_X6_GET_proc -> 0.9:X3_X6_GET_send_2xx 0.1:X3_X6_GET_send_5xx {}
+    [X3_X6_GET_resp_2xx] s_X6 = 3 ->(s_X6' = 0); // X3_X6_GET_send_2xx -> :listening {}
+    [X3_X6_GET_resp_5xx] s_X6 = 4 ->(s_X6' = 0); // X3_X6_GET_send_5xx -> :listening {}
+
+endmodule
+
+rewards "num_X2_X3_GET_resp_5xx"
+    [X2_X3_GET_resp_5xx] true : 1;
+endrewards
+
+rewards "num_X2_X5_GET_resp_2xx"
+    [X2_X5_GET_resp_2xx] true : 1;
+endrewards
+
+rewards "num_X3_X1_GET_resp_2xx"
+    [X3_X1_GET_resp_2xx] true : 1;
+endrewards
+
+rewards "num_X3_X1_GET_resp_5xx"
+    [X3_X1_GET_resp_5xx] true : 1;
+endrewards
+
+rewards "num_X2_X5_GET_resp_5xx"
+    [X2_X5_GET_resp_5xx] true : 1;
+endrewards
+
+rewards "num_X3_X4_GET_resp_2xx"
+    [X3_X4_GET_resp_2xx] true : 1;
+endrewards
+
+rewards "num_X0_X2_GET_resp_5xx"
+    [X0_X2_GET_resp_5xx] true : 1;
+endrewards
+
+rewards "num_X3_X4_GET_req"
+    [X3_X4_GET_req] true : 1;
+endrewards
+
+rewards "num_X0_X2_GET_resp_2xx"
+    [X0_X2_GET_resp_2xx] true : 1;
+endrewards
+
+rewards "num_X3_X4_GET_resp_5xx"
+    [X3_X4_GET_resp_5xx] true : 1;
+endrewards
+
+rewards "num_X2_X3_GET_resp_2xx"
+    [X2_X3_GET_resp_2xx] true : 1;
+endrewards
+
+rewards "num_X3_X6_GET_resp_2xx"
+    [X3_X6_GET_resp_2xx] true : 1;
+endrewards
+
+rewards "num_X3_X1_GET_req"
+    [X3_X1_GET_req] true : 1;
+endrewards
+
+rewards "num_X0_X2_GET_req"
+    [X0_X2_GET_req] true : 1;
+endrewards
+
+rewards "num_X2_X5_GET_req"
+    [X2_X5_GET_req] true : 1;
+endrewards
+
+rewards "num_X3_X6_GET_resp_5xx"
+    [X3_X6_GET_resp_5xx] true : 1;
+endrewards
+
+rewards "num_X3_X6_GET_req"
+    [X3_X6_GET_req] true : 1;
+endrewards
+
+rewards "num_X2_X3_GET_req"
+    [X2_X3_GET_req] true : 1;
+endrewards
+
+label "X0_polling" = s_X0=0;
+label "X0_failure" = s_X0=1;
+label "X0_X0_X2_GET_send" = s_X0=2;
+label "X0_X0_X2_GET_recv" = s_X0=3;
+label "X0_X0_X2_GET_send_retry1" = s_X0=4;
+label "X0_X0_X2_GET_recv_retry1" = s_X0=5;
+label "X0_X0_X2_GET_send_retry2" = s_X0=6;
+label "X0_X0_X2_GET_recv_retry2" = s_X0=7;
+label "X0_X0_X2_GET_send_retry3" = s_X0=8;
+label "X0_X0_X2_GET_recv_retry3" = s_X0=9;
+label "X1_listening" = s_X1=0;
+label "X1_X3_X1_GET_recv" = s_X1=1;
+label "X1_X3_X1_GET_proc" = s_X1=2;
+label "X1_X3_X1_GET_send_2xx" = s_X1=3;
+label "X1_X3_X1_GET_send_5xx" = s_X1=4;
+label "X2_listening" = s_X2=0;
+label "X2_X0_X2_GET_recv" = s_X2=1;
+label "X2_X0_X2_GET_proc" = s_X2=2;
+label "X2_X0_X2_GET_send_2xx" = s_X2=3;
+label "X2_X0_X2_GET_send_5xx" = s_X2=4;
+label "X2_X2_X5_GET_send" = s_X2=5;
+label "X2_X2_X5_GET_recv" = s_X2=6;
+label "X2_X2_X5_GET_send_retry1" = s_X2=7;
+label "X2_X2_X5_GET_recv_retry1" = s_X2=8;
+label "X2_X2_X5_GET_send_retry2" = s_X2=9;
+label "X2_X2_X5_GET_recv_retry2" = s_X2=10;
+label "X2_X2_X3_GET_send" = s_X2=11;
+label "X2_X2_X3_GET_recv" = s_X2=12;
+label "X2_X2_X3_GET_send_retry1" = s_X2=13;
+label "X2_X2_X3_GET_recv_retry1" = s_X2=14;
+label "X2_X2_X3_GET_send_retry2" = s_X2=15;
+label "X2_X2_X3_GET_recv_retry2" = s_X2=16;
+label "X3_listening" = s_X3=0;
+label "X3_X2_X3_GET_recv" = s_X3=1;
+label "X3_X2_X3_GET_proc" = s_X3=2;
+label "X3_X2_X3_GET_send_2xx" = s_X3=3;
+label "X3_X2_X3_GET_send_5xx" = s_X3=4;
+label "X3_X3_X1_GET_send" = s_X3=5;
+label "X3_X3_X1_GET_recv" = s_X3=6;
+label "X3_X3_X1_GET_send_retry1" = s_X3=7;
+label "X3_X3_X1_GET_recv_retry1" = s_X3=8;
+label "X3_X3_X1_GET_send_retry2" = s_X3=9;
+label "X3_X3_X1_GET_recv_retry2" = s_X3=10;
+label "X3_X3_X4_GET_send" = s_X3=11;
+label "X3_X3_X4_GET_recv" = s_X3=12;
+label "X3_X3_X4_GET_send_retry1" = s_X3=13;
+label "X3_X3_X4_GET_recv_retry1" = s_X3=14;
+label "X3_X3_X4_GET_send_retry2" = s_X3=15;
+label "X3_X3_X4_GET_recv_retry2" = s_X3=16;
+label "X3_X3_X6_GET_send" = s_X3=17;
+label "X3_X3_X6_GET_recv" = s_X3=18;
+label "X3_X3_X6_GET_send_retry1" = s_X3=19;
+label "X3_X3_X6_GET_recv_retry1" = s_X3=20;
+label "X3_X3_X6_GET_send_retry2" = s_X3=21;
+label "X3_X3_X6_GET_recv_retry2" = s_X3=22;
+label "X4_listening" = s_X4=0;
+label "X4_X3_X4_GET_recv" = s_X4=1;
+label "X4_X3_X4_GET_proc" = s_X4=2;
+label "X4_X3_X4_GET_send_2xx" = s_X4=3;
+label "X4_X3_X4_GET_send_5xx" = s_X4=4;
+label "X5_listening" = s_X5=0;
+label "X5_X2_X5_GET_recv" = s_X5=1;
+label "X5_X2_X5_GET_proc" = s_X5=2;
+label "X5_X2_X5_GET_send_2xx" = s_X5=3;
+label "X5_X2_X5_GET_send_5xx" = s_X5=4;
+label "X6_listening" = s_X6=0;
+label "X6_X3_X6_GET_recv" = s_X6=1;
+label "X6_X3_X6_GET_proc" = s_X6=2;
+label "X6_X3_X6_GET_send_2xx" = s_X6=3;
+label "X6_X3_X6_GET_send_5xx" = s_X6=4;

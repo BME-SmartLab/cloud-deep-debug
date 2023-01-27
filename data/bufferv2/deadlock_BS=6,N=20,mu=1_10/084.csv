@@ -1,0 +1,7 @@
+action,step,time,p,b,serving,c,getting
+-,0,0.0,0,0,false,0,false
+[producing],1,54.01355892573645,1,1,false,0,false
+[con_ready],2,63.48671563679773,1,2,false,0,true
+[producing],3,65.69565743443769,2,2,true,0,true
+[consuming],4,67.42910608245853,2,1,false,1,false
+[producing],5,69.62784740329516,3,1,true,1,false

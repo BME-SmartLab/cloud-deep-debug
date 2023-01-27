@@ -1,0 +1,16 @@
+action,step,time,p,p2,p3,b,serving1,serving2,serving3,c1,getting1,c2,getting2,c3,getting3,f,b2,serving11,serving12,serving13,c11,getting11,c12,getting12,c13,getting13
+-,0,0.0,0,0,0,0,false,false,false,0,false,0,false,0,false,0,0,false,false,false,0,false,0,false,0,false
+[producing],1,25.50615239979289,1,0,0,1,false,false,false,0,false,0,false,0,false,0,0,false,false,false,0,false,0,false,0,false
+[con_ready2],2,36.77021363254272,1,0,0,1,false,true,false,0,false,0,true,0,false,0,0,false,false,false,0,false,0,false,0,false
+[consuming2],3,36.84899266479101,1,0,0,0,false,false,false,0,false,1,false,0,false,0,0,false,false,false,0,false,0,false,0,false
+[producing],4,52.09180945607709,2,0,0,1,false,false,false,0,false,1,false,0,false,0,0,false,false,false,0,false,0,false,0,false
+[con_ready2],5,56.27580582356274,2,0,0,1,false,true,false,0,false,1,true,0,false,0,0,false,false,false,0,false,0,false,0,false
+[consuming2],6,57.96062135768399,2,0,0,0,false,false,false,0,false,2,false,0,false,0,0,false,false,false,0,false,0,false,0,false
+[producing],7,90.34602595758174,3,0,0,1,false,false,false,0,false,2,false,0,false,0,0,false,false,false,0,false,0,false,0,false
+[con_ready3],8,97.78252189950057,3,0,0,1,false,false,true,0,false,2,false,0,true,0,0,false,false,false,0,false,0,false,0,false
+[consuming3],9,99.96719537180982,3,0,0,0,false,false,false,0,false,2,false,1,false,0,0,false,false,false,0,false,0,false,0,false
+[producing],10,101.19596189176082,4,0,0,1,false,false,false,0,false,2,false,1,false,0,0,false,false,false,0,false,0,false,0,false
+[forwarding],11,106.03738565985279,4,0,0,1,false,false,false,0,false,2,false,1,false,1,1,false,false,false,0,false,0,false,0,false
+[con_ready12],12,107.30742294800386,4,0,0,1,false,false,false,0,false,2,false,1,false,1,1,false,true,false,0,false,0,true,0,false
+[consuming12],13,107.75562118212547,4,0,0,1,false,false,false,0,false,2,false,1,false,1,0,false,false,false,0,false,1,false,0,false
+[producing3],14,108.57146803037911,4,0,1,1,true,false,false,0,false,2,false,1,false,1,0,false,false,false,0,false,1,false,0,false

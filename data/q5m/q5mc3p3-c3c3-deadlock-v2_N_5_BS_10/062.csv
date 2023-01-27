@@ -1,0 +1,16 @@
+action,step,time,p,p2,p3,b,serving1,serving2,serving3,c1,getting1,c2,getting2,f2,c3,getting3,f3,b1,serving11,serving12,serving13,b2,serving21,serving22,serving23,c11,getting11,c12,getting12,c13,getting13,c21,getting21,c22,getting22,c23,getting23
+-,0,0.0,0,0,0,0,false,false,false,0,false,0,false,0,0,false,0,0,false,false,false,0,false,false,false,0,false,0,false,0,false,0,false,0,false,0,false
+[producing],1,33.598867256594644,1,0,0,1,false,false,false,0,false,0,false,0,0,false,0,0,false,false,false,0,false,false,false,0,false,0,false,0,false,0,false,0,false,0,false
+[con_ready3],2,39.07913317059335,1,0,0,1,false,false,true,0,false,0,false,0,0,true,0,0,false,false,false,0,false,false,false,0,false,0,false,0,false,0,false,0,false,0,false
+[consuming3],3,39.58826302356086,1,0,0,0,false,false,false,0,false,0,false,0,1,false,0,0,false,false,false,0,false,false,false,0,false,0,false,0,false,0,false,0,false,0,false
+[forwarding3],4,70.19708421898225,1,0,0,0,false,false,false,0,false,0,false,0,1,false,1,0,false,false,false,1,false,false,false,0,false,0,false,0,false,0,false,0,false,0,false
+[producing],5,72.76982881945293,2,0,0,1,false,false,false,0,false,0,false,0,1,false,1,0,false,false,false,1,false,false,false,0,false,0,false,0,false,0,false,0,false,0,false
+[producing2],6,78.26622615436573,2,1,0,2,false,false,false,0,false,0,false,0,1,false,1,0,false,false,false,1,false,false,false,0,false,0,false,0,false,0,false,0,false,0,false
+[con_ready23],7,80.58563032912264,2,1,0,2,false,false,false,0,false,0,false,0,1,false,1,0,false,false,false,1,false,false,true,0,false,0,false,0,false,0,false,0,false,0,true
+[consuming23],8,81.97013610124083,2,1,0,2,false,false,false,0,false,0,false,0,1,false,1,0,false,false,false,0,false,false,false,0,false,0,false,0,false,0,false,0,false,1,false
+[producing],9,82.5370708418902,3,1,0,3,false,false,false,0,false,0,false,0,1,false,1,0,false,false,false,0,false,false,false,0,false,0,false,0,false,0,false,0,false,1,false
+[producing],10,84.52725410179076,4,1,0,4,false,false,false,0,false,0,false,0,1,false,1,0,false,false,false,0,false,false,false,0,false,0,false,0,false,0,false,0,false,1,false
+[producing3],11,85.34543858463971,4,1,1,5,false,false,false,0,false,0,false,0,1,false,1,0,false,false,false,0,false,false,false,0,false,0,false,0,false,0,false,0,false,1,false
+[producing],12,85.89827564138211,5,1,1,6,false,false,false,0,false,0,false,0,1,false,1,0,false,false,false,0,false,false,false,0,false,0,false,0,false,0,false,0,false,1,false
+[producing2],13,93.51854900759338,5,2,1,7,false,false,false,0,false,0,false,0,1,false,1,0,false,false,false,0,false,false,false,0,false,0,false,0,false,0,false,0,false,1,false
+[producing3],14,97.76583012538435,5,2,2,7,true,false,false,0,false,0,false,0,1,false,1,0,false,false,false,0,false,false,false,0,false,0,false,0,false,0,false,0,false,1,false

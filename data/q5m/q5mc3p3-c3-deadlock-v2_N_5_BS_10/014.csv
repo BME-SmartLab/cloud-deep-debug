@@ -1,0 +1,17 @@
+action,step,time,p,p2,p3,b,serving1,serving2,serving3,c1,getting1,c2,getting2,c3,getting3,f,b2,serving11,serving12,serving13,c11,getting11,c12,getting12,c13,getting13
+-,0,0.0,0,0,0,0,false,false,false,0,false,0,false,0,false,0,0,false,false,false,0,false,0,false,0,false
+[producing],1,69.39063284958796,1,0,0,1,false,false,false,0,false,0,false,0,false,0,0,false,false,false,0,false,0,false,0,false
+[producing],2,80.9926559437323,2,0,0,2,false,false,false,0,false,0,false,0,false,0,0,false,false,false,0,false,0,false,0,false
+[con_ready1],3,88.88956755210712,2,0,0,3,false,false,false,0,true,0,false,0,false,0,0,false,false,false,0,false,0,false,0,false
+[producing2],4,91.99096694032225,2,1,0,4,false,false,false,0,true,0,false,0,false,0,0,false,false,false,0,false,0,false,0,false
+[producing],5,99.34334086087598,3,1,0,5,false,false,false,0,true,0,false,0,false,0,0,false,false,false,0,false,0,false,0,false
+[producing3],6,100.35973835077598,3,1,1,5,true,false,false,0,true,0,false,0,false,0,0,false,false,false,0,false,0,false,0,false
+[consuming1],7,102.34998426623585,3,1,1,4,false,false,false,1,false,0,false,0,false,0,0,false,false,false,0,false,0,false,0,false
+[producing2],8,107.1155441444159,3,2,1,5,false,false,false,1,false,0,false,0,false,0,0,false,false,false,0,false,0,false,0,false
+[producing2],9,108.78387470991558,3,3,1,6,false,false,false,1,false,0,false,0,false,0,0,false,false,false,0,false,0,false,0,false
+[con_ready2],10,111.16031520088845,3,3,1,6,false,true,false,1,false,0,true,0,false,0,0,false,false,false,0,false,0,false,0,false
+[consuming2],11,111.58802778237347,3,3,1,5,false,false,false,1,false,1,false,0,false,0,0,false,false,false,0,false,0,false,0,false
+[producing],12,112.5502205880994,4,3,1,6,false,false,false,1,false,1,false,0,false,0,0,false,false,false,0,false,0,false,0,false
+[producing],13,115.53783918731357,5,3,1,7,false,false,false,1,false,1,false,0,false,0,0,false,false,false,0,false,0,false,0,false
+[producing3],14,117.6908362007006,5,3,2,8,false,false,false,1,false,1,false,0,false,0,0,false,false,false,0,false,0,false,0,false
+[producing3],15,126.7997177863018,5,3,3,8,true,false,false,1,false,1,false,0,false,0,0,false,false,false,0,false,0,false,0,false

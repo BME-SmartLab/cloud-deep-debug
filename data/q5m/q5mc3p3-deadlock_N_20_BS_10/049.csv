@@ -1,0 +1,17 @@
+action,step,time,p,p2,p3,b,serving1,serving2,serving3,c1,getting1,c2,getting2,c3,getting3
+-,0,0.0,0,0,0,0,false,false,false,0,false,0,false,0,false
+[producing],1,6.423304934496671,1,0,0,1,false,false,false,0,false,0,false,0,false
+[producing],2,13.962965276497146,2,0,0,2,false,false,false,0,false,0,false,0,false
+[producing3],3,16.038406686292962,2,0,1,3,false,false,false,0,false,0,false,0,false
+[producing],4,16.84309192735966,3,0,1,4,false,false,false,0,false,0,false,0,false
+[producing3],5,24.711899600194066,3,0,2,5,false,false,false,0,false,0,false,0,false
+[producing3],6,27.82069974934115,3,0,3,6,false,false,false,0,false,0,false,0,false
+[con_ready2],7,38.4942628724696,3,0,3,6,false,true,false,0,false,0,true,0,false
+[consuming2],8,38.56146562679444,3,0,3,5,false,false,false,0,false,1,false,0,false
+[producing2],9,42.747026001462665,3,1,3,6,false,false,false,0,false,1,false,0,false
+[con_ready3],10,44.048171042088406,3,1,3,6,false,false,true,0,false,1,false,0,true
+[consuming3],11,44.601619385118596,3,1,3,5,false,false,false,0,false,1,false,1,false
+[producing2],12,45.91601809189551,3,2,3,6,false,false,false,0,false,1,false,1,false
+[producing3],13,54.51340724954263,3,2,4,7,false,false,false,0,false,1,false,1,false
+[producing3],14,57.57426254268478,3,2,5,8,false,false,false,0,false,1,false,1,false
+[producing3],15,58.50290605180737,3,2,6,8,true,false,false,0,false,1,false,1,false

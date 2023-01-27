@@ -1,0 +1,17 @@
+action,step,time,p,p2,p3,b,serving1,serving2,serving3,c1,getting1,c2,getting2,c3,getting3,f,b2,serving11,serving12,serving13,c11,getting11,c12,getting12,c13,getting13
+-,0,0.0,0,0,0,0,false,false,false,0,false,0,false,0,false,0,0,false,false,false,0,false,0,false,0,false
+[producing],1,66.15425455973035,1,0,0,1,false,false,false,0,false,0,false,0,false,0,0,false,false,false,0,false,0,false,0,false
+[producing2],2,66.81371821244898,1,1,0,2,false,false,false,0,false,0,false,0,false,0,0,false,false,false,0,false,0,false,0,false
+[producing],3,72.47610608029929,2,1,0,3,false,false,false,0,false,0,false,0,false,0,0,false,false,false,0,false,0,false,0,false
+[con_ready3],4,116.14605554146246,2,1,0,3,false,false,true,0,false,0,false,0,true,0,0,false,false,false,0,false,0,false,0,false
+[consuming3],5,118.77903399231204,2,1,0,2,false,false,false,0,false,0,false,1,false,0,0,false,false,false,0,false,0,false,0,false
+[producing2],6,119.59959683824499,2,2,0,3,false,false,false,0,false,0,false,1,false,0,0,false,false,false,0,false,0,false,0,false
+[con_ready3],7,123.03711236536927,2,2,0,3,false,false,true,0,false,0,false,1,true,0,0,false,false,false,0,false,0,false,0,false
+[consuming3],8,123.15468617042742,2,2,0,2,false,false,false,0,false,0,false,2,false,0,0,false,false,false,0,false,0,false,0,false
+[producing3],9,128.34681322012048,2,2,1,2,true,false,false,0,false,0,false,2,false,0,0,false,false,false,0,false,0,false,0,false
+[forwarding],10,140.44710767487788,2,2,1,2,true,false,false,0,false,0,false,2,false,1,1,false,false,false,0,false,0,false,0,false
+[con_ready11],11,142.22050450689287,2,2,1,2,true,false,false,0,false,0,false,2,false,1,1,true,false,false,0,true,0,false,0,false
+[consuming11],12,144.76950412508376,2,2,1,2,true,false,false,0,false,0,false,2,false,1,0,false,false,false,1,false,0,false,0,false
+[forwarding],13,212.29995890851637,2,2,1,2,true,false,false,0,false,0,false,2,false,2,1,false,false,false,1,false,0,false,0,false
+[con_ready12],14,223.60313459035532,2,2,1,2,true,false,false,0,false,0,false,2,false,2,1,false,true,false,1,false,0,true,0,false
+[consuming12],15,226.07372559217848,2,2,1,2,true,false,false,0,false,0,false,2,false,2,0,false,false,false,1,false,1,false,0,false

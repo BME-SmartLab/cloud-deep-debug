@@ -1,0 +1,17 @@
+action,step,time,p,p2,p3,b,serving1,serving2,serving3,c1,getting1,c2,getting2,c3,getting3,f,b2,serving11,serving12,serving13,c11,getting11,c12,getting12,c13,getting13
+-,0,0.0,0,0,0,0,false,false,false,0,false,0,false,0,false,0,0,false,false,false,0,false,0,false,0,false
+[producing],1,10.19445857971513,1,0,0,1,false,false,false,0,false,0,false,0,false,0,0,false,false,false,0,false,0,false,0,false
+[producing],2,13.265754143434666,2,0,0,2,false,false,false,0,false,0,false,0,false,0,0,false,false,false,0,false,0,false,0,false
+[producing2],3,16.81402940063129,2,1,0,3,false,false,false,0,false,0,false,0,false,0,0,false,false,false,0,false,0,false,0,false
+[con_ready2],4,21.039409773314716,2,1,0,3,false,true,false,0,false,0,true,0,false,0,0,false,false,false,0,false,0,false,0,false
+[consuming2],5,22.543724211047067,2,1,0,2,false,false,false,0,false,1,false,0,false,0,0,false,false,false,0,false,0,false,0,false
+[con_ready3],6,23.540311957405883,2,1,0,2,false,false,true,0,false,1,false,0,true,0,0,false,false,false,0,false,0,false,0,false
+[consuming3],7,24.636902902665433,2,1,0,1,false,false,false,0,false,1,false,1,false,0,0,false,false,false,0,false,0,false,0,false
+[con_ready2],8,29.887451921720366,2,1,0,1,false,true,false,0,false,1,true,1,false,0,0,false,false,false,0,false,0,false,0,false
+[consuming2],9,30.703410717907197,2,1,0,0,false,false,false,0,false,2,false,1,false,0,0,false,false,false,0,false,0,false,0,false
+[producing],10,39.12448285349219,3,1,0,1,false,false,false,0,false,2,false,1,false,0,0,false,false,false,0,false,0,false,0,false
+[producing3],11,39.415500488822914,3,1,1,2,false,false,false,0,false,2,false,1,false,0,0,false,false,false,0,false,0,false,0,false
+[forwarding],12,51.52251769235751,3,1,1,2,false,false,false,0,false,2,false,1,false,1,1,false,false,false,0,false,0,false,0,false
+[producing3],13,51.57793988554917,3,1,2,2,true,false,false,0,false,2,false,1,false,1,1,false,false,false,0,false,0,false,0,false
+[con_ready13],14,53.11942045125728,3,1,2,2,true,false,false,0,false,2,false,1,false,1,1,false,false,true,0,false,0,false,0,true
+[consuming13],15,53.58254958851031,3,1,2,2,true,false,false,0,false,2,false,1,false,1,0,false,false,false,0,false,0,false,1,false
